@@ -1,7 +1,7 @@
 name: Create Feedback Page
 
 on:
-  workflow_dispatch:  # Trigger manually or via API later
+  workflow_dispatch:  # Triggered manually or via API
 
 jobs:
   create_feedback:
@@ -24,4 +24,4 @@ jobs:
           git push
           
     env:
-      FEEDBACK_TEXT: ${{ secrets.FEEDBACK_TEXT }}
+      FEEDBACK_TEXT: ${{ github.event.inputs.feedback_text }}  # Feedback passed in the API call
