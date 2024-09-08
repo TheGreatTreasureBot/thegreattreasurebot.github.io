@@ -1,0 +1,36 @@
+name: Cleanup Feedback
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'  # Run every 5 minutes
+
+jobs:
+  cleanup_feedback:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Delete old feedback files
+      run: |
+        # Get current time in seconds since epoch
+        CURRENT_TIME=$(date +%s)
+
+        # Find and delete files older than 5 minutes (300 seconds)
+        find feedback/ -type f -name '*.md' -exec sh -c '
+          for FILE do
+            FILE_TIME=$(stat -c %Y "$FILE")
+            if [ $((CURRENT_TIME - FILE_TIME)) -gt 300 ]; then
+              echo "Deleting $FILE"
+              rm "$FILE"
+            fi
+          done
+        ' sh {} +
+        
+        git config --global user.name "GitHub Action"
+        git config --global user.email "action@github.com"
+        
+        git add feedback/
+        git commit -m "Clean up old feedback files"
+        git push
