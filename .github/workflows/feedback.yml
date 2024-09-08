@@ -1,4 +1,4 @@
-name: Create Feedback Page
+name: Add Feedback
 
 on:
   workflow_dispatch:  # Triggered manually or via API
