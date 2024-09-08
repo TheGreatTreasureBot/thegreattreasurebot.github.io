@@ -1,7 +1,12 @@
-name: Add Feedback
+name: Create Feedback
 
 on:
-  workflow_dispatch:  # Triggered manually or via API
+  workflow_dispatch:
+    inputs:
+      feedback_text:
+        description: 'Feedback text provided by the user'
+        required: true
+        type: string
 
 jobs:
   create_feedback:
@@ -16,12 +21,9 @@ jobs:
           RANDOM_ID=$(openssl rand -hex 6)
           FILE_PATH="feedback/$RANDOM_ID.md"
           echo "# User Feedback" >> $FILE_PATH
-          echo "$FEEDBACK_TEXT" >> $FILE_PATH
+          echo "${{ github.event.inputs.feedback_text }}" >> $FILE_PATH
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
           git add $FILE_PATH
           git commit -m "Added feedback $RANDOM_ID"
           git push
-          
-    env:
-      FEEDBACK_TEXT: ${{ github.event.inputs.feedback_text }}  # Feedback passed in the API call
