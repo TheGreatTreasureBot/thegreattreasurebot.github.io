@@ -1,0 +1,27 @@
+name: Create Feedback Page
+
+on:
+  workflow_dispatch:  # Trigger manually or via API later
+
+jobs:
+  create_feedback:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Generate feedback file
+        run: |
+          RANDOM_ID=$(openssl rand -hex 6)
+          FILE_PATH="feedback/$RANDOM_ID.md"
+          echo "# User Feedback" >> $FILE_PATH
+          echo "$FEEDBACK_TEXT" >> $FILE_PATH
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add $FILE_PATH
+          git commit -m "Added feedback $RANDOM_ID"
+          git push
+          
+    env:
+      FEEDBACK_TEXT: ${{ secrets.FEEDBACK_TEXT }}
