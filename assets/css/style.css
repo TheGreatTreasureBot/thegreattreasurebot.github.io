@@ -27,10 +27,9 @@ body {
 
 /* Styling for tables */
 table {
-    border-collapse: collapse; /* Collapse borders for a cleaner look */
+    width: 100%;
     margin: 20px 0;
-    background-color: #222; /* Dark background for table */
-    color: #eee; /* Light text color */
+    border-collapse: collapse; /* Collapse borders for a cleaner look */
 }
 
 /* Styling for table headers and cells */
@@ -42,9 +41,8 @@ th, td {
 
 /* Center the table within its container */
 .table-container {
-    display: block; /* Block-level container */
-    margin: auto; /* Center horizontally */
-    width: fit-content; /* Shrink to fit content */
+    display: flex;
+    justify-content: center; /* Center the table horizontally */
 }
 
 /* Additional styling for headers and text */
