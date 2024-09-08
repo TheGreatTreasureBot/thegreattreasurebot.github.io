@@ -33,4 +33,4 @@ jobs:
         git commit -m "Added feedback $RANDOM_ID"
         
         # Push changes using the GitHub Actions token for authentication
-        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
+        git push https://x-access-token:${{ secrets.TGT_API_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
