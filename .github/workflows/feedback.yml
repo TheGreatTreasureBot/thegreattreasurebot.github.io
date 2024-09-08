@@ -3,8 +3,23 @@ name: Create Feedback
 on:
   workflow_dispatch:
     inputs:
-      feedback_text:
+      display_name:
+        description: 'Display name of the user'
+        required: true
+      username:
+        description: 'Username of the user'
+        required: true
+      content:
         description: 'Feedback content'
+        required: true
+      location:
+        description: 'Player location'
+        required: true
+      user_id:
+        description: 'User ID'
+        required: true
+      account_age:
+        description: 'Account age'
         required: true
 
 jobs:
@@ -23,14 +38,30 @@ jobs:
         # Create the feedback directory if it doesn't exist
         mkdir -p feedback
         
-        echo "# User Feedback" >> $FILE_PATH
-        echo "${{ github.event.inputs.feedback_text }}" >> $FILE_PATH
-        
+        # Write the content to the file using the template
+        echo '![Player Image](https://tr.rbxcdn.com/30DAY-AvatarHeadshot-2521A55EB625C656D04FB161DE63B4D9-Png/150/150/AvatarHeadshot/Png/noFilter)' >> $FILE_PATH
+        echo '' >> $FILE_PATH
+        echo '# ${{ github.event.inputs.display_name }} (@${{ github.event.inputs.username }})' >> $FILE_PATH
+        echo '' >> $FILE_PATH
+        echo '## Content' >> $FILE_PATH
+        echo '' >> $FILE_PATH
+        echo '${{ github.event.inputs.content }}' >> $FILE_PATH
+        echo '' >> $FILE_PATH
+        echo '## Information' >> $FILE_PATH
+        echo '' >> $FILE_PATH
+        echo '| **Attribute**                  | **Details**         |' >> $FILE_PATH
+        echo '|--------------------------------|---------------------|' >> $FILE_PATH
+        echo '| **Player Location**            | ${{ github.event.inputs.location }}           |' >> $FILE_PATH
+        echo '| **User ID**                    | `${{ github.event.inputs.user_id }}`         |' >> $FILE_PATH
+        echo '| **Account Age**                | `${{ github.event.inputs.account_age }}`         |' >> $FILE_PATH
+        echo '| **Text Filtered?**             | No                  |' >> $FILE_PATH
+        echo '| **User Verified on Roblox?**   | No                  |' >> $FILE_PATH
+        echo '| **Server Location**            | [hidden]            |' >> $FILE_PATH
+
         git config --global user.name "GitHub Action"
         git config --global user.email "action@github.com"
         
+        git config --global http.https://github.com/.extraheader "AUTHORIZATION: bearer ${{ secrets.MY_ACCESS_TOKEN }}"
         git add $FILE_PATH
         git commit -m "Added feedback $RANDOM_ID"
-        
-        # Push changes using the GitHub Actions token for authentication
-        git push https://x-access-token:${{ secrets.TGT_API_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
+        git push https://github.com/${{ github.repository }}.git HEAD:main
