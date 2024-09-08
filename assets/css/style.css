@@ -10,8 +10,11 @@ body {
     background-color: #04081a; /* Dark bluish-black background */
     color: #f4f4f4; /* Light text color */
     line-height: 1.6;
-    padding: 20px;
-    text-align: center; /* Center-align text on the body */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    min-height: 100vh; /* Full viewport height */
+    margin: 0; /* Remove default margin */
 }
 
 /* Container for centering and padding */
