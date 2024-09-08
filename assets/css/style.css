@@ -6,7 +6,7 @@ body, h1, h2, p, table {
 
 /* Overall page styling */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Montserrat', system-ui;
     background-color: #0d0d0d; /* Dark bluish-black background */
     color: #f4f4f4; /* Light text color */
     line-height: 1.6;
