@@ -27,9 +27,9 @@ body {
 
 /* Styling for tables */
 table {
-    width: 100%;
     margin: 20px 0;
     border-collapse: collapse; /* Collapse borders for a cleaner look */
+    /* Remove width: 100% to keep the table's original size */
 }
 
 /* Styling for table headers and cells */
@@ -43,6 +43,7 @@ th, td {
 .table-container {
     display: flex;
     justify-content: center; /* Center the table horizontally */
+    /* Remove flex direction or align-items if not needed */
 }
 
 /* Additional styling for headers and text */
