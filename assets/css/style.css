@@ -1,54 +1,111 @@
-/* Basic reset for margins and padding */
 body, h1, h2, p, table {
     margin: 0;
     padding: 0;
 }
 
-/* Overall page styling */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
 body {
-    font-family: 'Montserrat', system-ui;
-    background-color: #04081a; /* Dark bluish-black background */
-    color: #f4f4f4; /* Light text color */
-    line-height: 1.6;
+    font-family: 'Poppins', system-ui, sans-serif;
+    background-color: #10132A;
+    color: #f4f4f4;
+    line-height: 1.8;
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    min-height: 100vh; /* Full viewport height */
-    margin: 0; /* Remove default margin */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
-/* Container for centering and padding */
 .container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
-    background: #333; /* Slightly lighter background for the container */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    text-align: left; /* Reset text-align to left inside container */
+    background: #1F233A;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    text-align: left;
 }
 
-/* Styling for tables */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #FFD700;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #E3E3E3;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
 table {
     width: 100%;
     margin: 20px 0;
-    border-collapse: collapse; /* Collapse borders for a cleaner look */
+    border-collapse: collapse;
 }
 
-/* Styling for table headers and cells */
 th, td {
-    padding: 10px;
-    border: 1px solid #555; /* Slightly lighter border color */
-    text-align: left; /* Align text to the left */
+    padding: 12px 15px;
+    border: 1px solid #555;
+    text-align: left;
+    background-color: #2B2F4D;
+    color: #f4f4f4;
 }
 
-/* Center the table within its container */
+tr:nth-child(even) {
+    background-color: #323759;
+}
+
 .table-container {
     display: flex;
-    justify-content: center; /* Center the table horizontally */
+    justify-content: center;
 }
 
-/* Additional styling for headers and text */
-h1, h2 {
-    margin-bottom: 10px;
+table tr:hover {
+    background-color: #444A6B;
+}
+
+p {
+    margin-bottom: 20px;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #cfcfcf;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #FFD700;
+    border: none;
+    border-radius: 6px;
+    color: #10132A;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #E8C700;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    table, th, td {
+        font-size: 0.9rem;
+    }
 }
