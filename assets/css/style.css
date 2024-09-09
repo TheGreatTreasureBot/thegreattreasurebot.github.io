@@ -11,6 +11,7 @@ body {
     color: #f4f4f4;
     line-height: 1.8;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -19,12 +20,13 @@ body {
 
 .container {
     max-width: 900px;
+    width: 100%;
     margin: 0 auto;
     background: #1F233A;
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-    text-align: left;
+    text-align: center;
 }
 
 h1 {
@@ -32,7 +34,6 @@ h1 {
     font-weight: 600;
     color: #FFD700;
     margin-bottom: 20px;
-    text-align: center;
 }
 
 h2 {
@@ -40,7 +41,6 @@ h2 {
     font-weight: 500;
     color: #E3E3E3;
     margin-bottom: 15px;
-    text-align: left;
 }
 
 table {
@@ -59,11 +59,6 @@ th, td {
 
 tr:nth-child(even) {
     background-color: #323759;
-}
-
-.table-container {
-    display: flex;
-    justify-content: center;
 }
 
 table tr:hover {
@@ -92,19 +87,28 @@ button:hover {
     background-color: #E8C700;
 }
 
+footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #8c8c8c;
+}
+
 @media (max-width: 768px) {
     .container {
         padding: 20px;
     }
-    
+
     h1 {
         font-size: 2rem;
     }
-    
+
     h2 {
         font-size: 1.5rem;
     }
-    
+
     table, th, td {
         font-size: 0.9rem;
     }
